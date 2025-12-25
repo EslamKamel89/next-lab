@@ -1,4 +1,5 @@
 import logoImg from "@/assets/logo.png";
+import Image from "next/image";
 import Link from "next/link";
 
 const Header = () => {
@@ -13,9 +14,10 @@ const Header = () => {
           href="/"
           className="relative flex items-center gap-3 text-lg font-semibold text-white overflow-visible"
         >
-          <img
-            src={logoImg.src}
+          <Image
+            src={logoImg}
             alt="Foodies logo"
+            priority
             className="relative mt-5 h-20 w-20 rounded-full bg-black/40 p-1 ring-1 ring-white/30 shadow-lg"
           />
           <span className="mt-2 tracking-wide">Foodies</span>
