@@ -1,15 +1,14 @@
 import logoImg from "@/assets/logo.png";
 import Image from "next/image";
 import Link from "next/link";
+import NavLink from "./NavLink";
 
 const Header = () => {
   return (
     <header className="relative z-50 overflow-visible mb-5">
-      {/* Navbar background */}
       <div className="absolute inset-x-0 top-0 h-16 bg-black/10" />
 
       <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-6">
-        {/* Brand */}
         <Link
           href="/"
           className="relative flex items-center gap-3 text-lg font-semibold text-white overflow-visible"
@@ -23,29 +22,18 @@ const Header = () => {
           <span className="mt-2 tracking-wide">Foodies</span>
         </Link>
 
-        {/* Navigation */}
         <nav className="hidden md:block">
-          <ul className="flex items-center gap-10 text-sm font-medium text-white/80">
+          <ul className="flex items-center gap-10 text-sm font-medium">
             <li>
-              <Link
-                href="/meals"
-                className="hover:text-white transition-colors"
-              >
-                Browse Meals
-              </Link>
+              <NavLink href="/meals"> Browse Meals</NavLink>
             </li>
+
             <li>
-              <Link
-                href="/meals/community"
-                className="hover:text-white transition-colors"
-              >
-                Foodies Community
-              </Link>
+              <NavLink href="/community">Foodies Community</NavLink>
             </li>
           </ul>
         </nav>
 
-        {/* Actions */}
         <div className="flex items-center gap-3">
           <Link
             href="/meals/share"
@@ -54,7 +42,6 @@ const Header = () => {
             Share Recipe
           </Link>
 
-          {/* Mobile Menu */}
           <button
             aria-label="Open menu"
             className="md:hidden rounded-full bg-black/40 p-2 text-white hover:bg-black/60 transition"
