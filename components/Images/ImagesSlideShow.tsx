@@ -56,14 +56,15 @@ const ImagesSlideShow: React.FC = () => {
         );
       })}
 
-      <div className="absolute bottom-4 flex gap-2 justify-center">
+      <div className="absolute bottom-4 flex gap-4 justify-center z-50">
         {images.map((_, idx) => (
           <div
             key={idx}
-            className={`h-2 w-2 rounded-full transition-all duration-300 
+            className={`h-2 w-2 rounded-full transition-all duration-300  cursor-pointer
             ${
-              idx === currentImageIndex ? "bg-accent scale-125" : "bg-white/30"
+              idx === currentImageIndex ? "bg-accent scale-200" : "bg-white/50"
             }`}
+            onClick={() => setCurrentImageIndex(idx)}
           />
         ))}
       </div>
