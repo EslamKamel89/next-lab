@@ -7,6 +7,6 @@ export async function sleep(milliseconds: number) {
   });
 }
 export async function getMeals(): Promise<Meal[]> {
-  await new Promise((r) => setTimeout(r, 2000));
+  await sleep(3000);
   return db.prepare(`SELECT * FROM meals`).all() as Meal[];
 }
