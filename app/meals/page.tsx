@@ -1,8 +1,12 @@
 import MealsGrid from "@/components/Meals/MealsGrid";
+import MealsGridFallback from "@/components/Meals/MealsGridFallback";
+import { getMeals } from "@/lib/meals";
 import Link from "next/link";
-import { meals } from "./dummy";
+import { Suspense } from "react";
+export const dynamic = "force-static";
+export const revalidate = false;
 
-const MealsPage = () => {
+const MealsPage = async () => {
   return (
     <>
       <header className="text-center space-y-4 mb-16">
@@ -23,12 +27,18 @@ const MealsPage = () => {
           </Link>
         </p>
       </header>
-
       <main>
-        <MealsGrid meals={meals} />
+        <Suspense fallback={MealsGridFallback()}>
+          <MealsList />
+        </Suspense>
       </main>
     </>
   );
 };
 
 export default MealsPage;
+
+async function MealsList() {
+  const meals = await getMeals();
+  return <MealsGrid meals={meals} />;
+}
