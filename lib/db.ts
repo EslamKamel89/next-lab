@@ -1,5 +1,4 @@
 import sql from "better-sqlite3";
-const db = sql("meals.db");
 export type Meal = {
   id?: string;
   title: string;
@@ -173,8 +172,10 @@ const dummyMeals: Meal[] = [
   },
 ];
 
-db.prepare(
-  `
+export function initData() {
+  const db = sql("meals.db");
+  db.prepare(
+    `
    CREATE TABLE IF NOT EXISTS meals (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
        slug TEXT NOT NULL UNIQUE,
@@ -186,9 +187,12 @@ db.prepare(
        creator_email TEXT NOT NULL
     )
 `
-).run();
-
-function initData() {
+  ).run();
+  const row = db
+    .prepare(`SELECT COUNT(*) as 'meals_count' FROM meals`)
+    .get() as { meals_count: number };
+  const count = row.meals_count;
+  if (count > 0) return;
   const stmt = db.prepare(`
       INSERT INTO meals VALUES (
          null,
@@ -206,5 +210,3 @@ function initData() {
     stmt.run(meal);
   }
 }
-
-initData();

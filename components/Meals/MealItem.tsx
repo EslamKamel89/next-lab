@@ -1,5 +1,5 @@
 // components/Meals/MealItem.tsx
-import { Meal } from "@/initdb";
+import { Meal } from "@/lib/db";
 import Image from "next/image";
 import Link from "next/link";
 

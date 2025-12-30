@@ -1,4 +1,4 @@
-import { Meal } from "@/initdb";
+import { Meal } from "@/lib/db";
 
 export const meals: Meal[] = [
   {

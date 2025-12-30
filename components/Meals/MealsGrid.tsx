@@ -1,4 +1,4 @@
-import { Meal } from "@/initdb";
+import { Meal } from "@/lib/db";
 import MealItem from "./MealItem";
 
 const MealsGrid: React.FC<{ meals: Meal[] }> = ({ meals }) => {

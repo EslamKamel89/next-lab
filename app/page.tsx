@@ -1,7 +1,10 @@
 import ImagesSlideShow from "@/components/Images/ImagesSlideShow";
+import ensureInitialized from "@/lib/init";
 import Link from "next/link";
 
 export default function Home() {
+  ensureInitialized();
+
   return (
     <>
       <header className="relative w-full overflow-hidden rounded-xl shadow-lg bg-surface mb-12 ">
