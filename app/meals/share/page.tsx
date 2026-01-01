@@ -1,3 +1,5 @@
+import ImagePicker from "@/components/Meals/ImagePicker";
+
 // app/meals/share/page.tsx
 const MealsSharePage = () => {
   return (
@@ -88,9 +90,7 @@ const MealsSharePage = () => {
           </p>
 
           {/* Image Picker Placeholder */}
-          <div className="rounded-lg border border-white/10 bg-black/20 text-white/50 py-16 text-center">
-            IMAGE PICKER
-          </div>
+          <ImagePicker label="Upload your meal image" name="image" />
 
           {/* Submit Button */}
           <p className="text-center pt-4">
