@@ -1,26 +1,7 @@
 import ImagePicker from "@/components/Meals/ImagePicker";
-import { Meal } from "@/lib/db";
-import { getOptionalString, getString } from "@/lib/normalize";
-import { slugify } from "@/lib/slug";
+import { shareMeal } from "@/lib/action";
 
-function getMealFromFormData(form: FormData): Meal {
-  const title = getString(form, "title");
-  const meal: Meal = {
-    title: title,
-    slug: slugify(title),
-    summary: getString(form, "summary"),
-    instructions: getOptionalString(form, "instructions"),
-    creator: getOptionalString(form, "name"),
-    creator_email: getOptionalString(form, "email"),
-    image: "",
-  };
-  return meal;
-}
 const MealsSharePage = () => {
-  async function shareMeal(formData: FormData) {
-    "use server";
-    const meal = getMealFromFormData(formData);
-  }
   return (
     <>
       {/* Header */}
