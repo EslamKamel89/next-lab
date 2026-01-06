@@ -1,11 +1,12 @@
 "use server";
-import { Meal } from "@/lib/db";
 import { getEmail, getOptionalFile, getString } from "@/lib/normalize";
 import { slugify } from "@/lib/slug";
 import { redirect } from "next/navigation";
 import { createMeal } from "./meals";
 import { saveFile } from "./save_file";
+import { Meal, MealError } from "./types";
 async function getMealFromFormData(form: FormData): Promise<Meal> {
+  const errors: MealError = {};
   const title = getString(form, "title");
   const slug = slugify(title);
   const file = getOptionalFile(form, "image");

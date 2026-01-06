@@ -38,7 +38,7 @@ const MealsSharePage = () => {
                 Your email
               </label>
               <input
-                type="email"
+                type="text"
                 id="email"
                 name="email"
                 className="rounded-lg bg-black/20 text-white px-4 py-2 outline-none border border-white/10 focus:border-accent focus:ring-2 focus:ring-accent transition"

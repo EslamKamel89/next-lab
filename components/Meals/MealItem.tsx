@@ -1,5 +1,4 @@
-// components/Meals/MealItem.tsx
-import { Meal } from "@/lib/db";
+import { Meal } from "@/lib/types";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,7 +10,7 @@ const MealItem: React.FC<{ meal: Meal }> = ({
       <header className="relative h-48">
         <Image
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          src={image}
+          src={image ?? ""}
           alt={title}
           fill
           className="object-cover"

@@ -1,6 +1,6 @@
 import sql from "better-sqlite3";
 import xss from "xss";
-import { Meal } from "./db";
+import { Meal } from "./types";
 const db = sql("meals.db");
 export async function sleep(milliseconds: number) {
   await new Promise((r) => {
