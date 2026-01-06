@@ -35,10 +35,13 @@ async function getMealFromFormData(form: FormData): Promise<MealResult> {
   }
   return { data: meal };
 }
-export async function shareMeal(formData: FormData) {
+export async function shareMeal(
+  prevState: MealError,
+  formData: FormData
+): Promise<MealError> {
   const result = await getMealFromFormData(formData);
   if (result.errors) {
-    return;
+    return result.errors;
   }
   await createMeal(result.data);
   redirect("/meals");
