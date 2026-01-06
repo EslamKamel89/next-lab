@@ -1,6 +1,6 @@
 "use server";
 import { Meal } from "@/lib/db";
-import { getOptionalFile, getOptionalString, getString } from "@/lib/normalize";
+import { getEmail, getOptionalFile, getString } from "@/lib/normalize";
 import { slugify } from "@/lib/slug";
 import { redirect } from "next/navigation";
 import { createMeal } from "./meals";
@@ -14,9 +14,9 @@ async function getMealFromFormData(form: FormData): Promise<Meal> {
     title,
     slug,
     summary: getString(form, "summary"),
-    instructions: getOptionalString(form, "instructions"),
-    creator: getOptionalString(form, "name"),
-    creator_email: getOptionalString(form, "email"),
+    instructions: getString(form, "instructions"),
+    creator: getString(form, "name"),
+    creator_email: getEmail(form, "email"),
     image: null,
   };
   if (file) {

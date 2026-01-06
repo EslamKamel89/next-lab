@@ -1,4 +1,5 @@
 import ImagePicker from "@/components/Meals/ImagePicker";
+import SubmitButton from "@/components/ShareMeal/SubmitButton";
 import { shareMeal } from "@/lib/actions";
 
 const MealsSharePage = () => {
@@ -28,7 +29,6 @@ const MealsSharePage = () => {
                 type="text"
                 id="name"
                 name="name"
-                required
                 className="rounded-lg bg-black/20 text-white px-4 py-2 outline-none border border-white/10 focus:border-accent focus:ring-2 focus:ring-accent transition"
               />
             </p>
@@ -41,7 +41,6 @@ const MealsSharePage = () => {
                 type="email"
                 id="email"
                 name="email"
-                required
                 className="rounded-lg bg-black/20 text-white px-4 py-2 outline-none border border-white/10 focus:border-accent focus:ring-2 focus:ring-accent transition"
               />
             </p>
@@ -56,7 +55,6 @@ const MealsSharePage = () => {
               type="text"
               id="title"
               name="title"
-              required
               className="rounded-lg bg-black/20 text-white px-4 py-2 outline-none border border-white/10 focus:border-accent focus:ring-2 focus:ring-accent transition"
             />
           </p>
@@ -70,7 +68,6 @@ const MealsSharePage = () => {
               type="text"
               id="summary"
               name="summary"
-              required
               className="rounded-lg bg-black/20 text-white px-4 py-2 outline-none border border-white/10 focus:border-accent focus:ring-2 focus:ring-accent transition"
             />
           </p>
@@ -84,7 +81,6 @@ const MealsSharePage = () => {
               id="instructions"
               name="instructions"
               rows={8}
-              required
               className="rounded-lg bg-black/20 text-white px-4 py-3 outline-none border border-white/10 focus:border-accent focus:ring-2 focus:ring-accent transition"
             />
           </p>
@@ -93,14 +89,7 @@ const MealsSharePage = () => {
           <ImagePicker label="Upload your meal image" name="image" />
 
           {/* Submit Button */}
-          <p className="text-center pt-4">
-            <button
-              type="submit"
-              className="rounded-full bg-accent text-black font-semibold px-8 py-2 text-sm hover:opacity-90 transition"
-            >
-              Share Meal
-            </button>
-          </p>
+          <SubmitButton />
         </form>
       </main>
     </>
