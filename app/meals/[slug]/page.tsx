@@ -1,11 +1,61 @@
 import { getMealBySlug } from "@/lib/meals";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const slug = (await params).slug;
+  const meal = await getMealBySlug(slug);
+  if (!meal) {
+    return {
+      title: "Meal Not Found | Foodies",
+      description: "The requested meal could not be found.",
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
+  const title = `${meal.title} | Foodies`;
+  const description = meal.summary;
+  return {
+    title,
+    description,
 
+    robots: {
+      index: true,
+      follow: true,
+    },
+
+    openGraph: {
+      title,
+      description,
+      url: `https://your-domain.com/meals/${meal.slug}`,
+      siteName: "Foodies",
+      images: meal.image
+        ? [
+            {
+              url: `https://your-domain.com${meal.image}`,
+              width: 1200,
+              height: 630,
+              alt: meal.title,
+            },
+          ]
+        : [],
+      type: "article",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: meal.image ? [`https://your-domain.com${meal.image}`] : [],
+    },
+  };
+}
 const MealDetails = async ({ params }: Props) => {
   const { slug } = await params;
   const meal = await getMealBySlug(slug);

@@ -1,6 +1,7 @@
 "use server";
 import { getEmail, getOptionalFile, getString } from "@/lib/normalize";
 import { slugify } from "@/lib/slug";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createMeal } from "./meals";
 import { saveFile } from "./save_file";
@@ -41,8 +42,10 @@ export async function shareMeal(
 ): Promise<MealError> {
   const result = await getMealFromFormData(formData);
   if (result.errors) {
+    revalidatePath("/meals/share");
     return result.errors;
   }
+  revalidatePath("/meals");
   await createMeal(result.data);
   redirect("/meals");
 }
